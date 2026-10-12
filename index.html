@@ -7,36 +7,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="inputcontainer">
-        <div class="input-divs" id="inputid">
-        <input type="text" id="inputfield" placeholder="Enter task...">
-        <button type="submit" id="submit-button" >Submit</button>
-        </div>
-        <div class="input-divs">
-        <button id="deletebutton"> DELETE</button>
-        </div>
-    </div>
     <div class="datacontainer">
         <div id="todo-box" class="box">
             <div class="head"><h1>To-Do</h1></div>
             <div class="tasks">
-                <span class="task">JS</span>
+                
+            </div>
+            <div class="input-divs" id="inputid">
+                    <form id="forminput">
+                        <input type="text" id="inputfield" placeholder="Enter task...">
+                        <button type="submit" id="submit-button" >Submit</button>
+                    </form>
             </div>
         </div>
 
         <div id="progress-box" class="box">
             <div class="head"><h1>In-Progress</h1></div>
             <div class="tasks">
-                <span class="task">CSS</span>
+                
             </div>
         </div>
             
         <div id="completed-box" class="box">
             <div class="head"><h1>Completed</h1></div>
             <div class="tasks">
-                <span class="task">HTML</span>
+                
             </div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html> 
