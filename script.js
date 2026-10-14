@@ -3,6 +3,19 @@ const taskForm = document.getElementById('forminput');
 const todoTaskContainer = document.querySelector('#todo-box .tasks');
 let draggedTask = null;
 
+function addEvents(task) {
+    const deleteBtn = task.querySelector('.delete-button');
+    if (deleteBtn) {
+        deleteBtn.addEventListener('click', function() {
+            task.remove();
+            saveTasks();
+        });
+    }
+    task.addEventListener('dragstart', function(){
+        draggedTask = task;
+    });
+}
+
 taskForm.addEventListener('submit', function(event){
     event.preventDefault();
     const taskText = taskInput.value;
@@ -13,17 +26,9 @@ taskForm.addEventListener('submit', function(event){
         newTask.innerHTML = `<span class="task">${taskText}</span><button type="reset" class="delete-button">DELETE</button>`;
 
         todoTaskContainer.appendChild(newTask);
+        addEvents(newTask);
         taskInput.value = '';
         saveTasks();
-        const deleteBtn = newTask.querySelector('.delete-button');
-        
-        deleteBtn.addEventListener('click', function() {
-            newTask.remove();
-            saveTasks();
-        })
-        newTask.addEventListener('dragstart', function(){
-            draggedTask = newTask
-        })
     }
 })
 
@@ -57,6 +62,10 @@ function loadTasks() {
     if (localStorage.getItem('completedTasks')) {
         document.querySelector('#completed-box .tasks').innerHTML = localStorage.getItem('completedTasks');
     }
+
+    document.querySelectorAll('.task-items').forEach(function(task) {
+        addEvents(task);
+    });
 }
 loadTasks();
 
